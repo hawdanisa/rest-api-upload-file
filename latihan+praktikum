@@ -503,6 +503,21 @@ app.post('/detail_transaksi', (req,res) => {
 })
 })
 
+// endpoint ambil data detail_transaksi
+app.get("/detail_transaksi", (req, res) => {
+    // create sql query
+    let sql = "select * from detail_transaksi"
+
+    // run query
+    db.query(sql, (error, result) => {
+        if (error) throw error
+        res.json({
+            data: result,
+            count: result.length
+        })
+    })
+})
+
 app.listen(8000, () =>{
     console.log("Server run on port 8000");
 })
